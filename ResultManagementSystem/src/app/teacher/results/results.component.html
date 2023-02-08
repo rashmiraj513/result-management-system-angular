@@ -1,0 +1,42 @@
+<section id="results">
+  <div class="container align-items-center justify-content-center col-md-8 holder" style="margin-top: 8%;">
+    <div class="text-end">
+      <button class="btn btn-primary" routerLink="/teacher/add-record">Add Record</button>
+    </div>
+    <div>
+      <h3>Total Students - {{results?.length}}</h3>
+    </div>
+    <div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Roll No.</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Score</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of results">
+            <td>{{result.rollNo}}</td>
+            <td>{{result.name}}</td>
+            <td>{{result.dob}}</td>
+            <td>{{result.score}}</td>
+            <td>
+              <div class="row">
+                <div class="col-lg-6">
+                  <i (click)="editRecord(result)" class="bi bi-pencil-square success"></i>
+                </div>
+                <div class="col-lg-6">
+                  <i (click)="deleteRecord(result)" class="bi bi-trash3-fill error"></i>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <p id="deletionConfirmation"></p>
+</section>

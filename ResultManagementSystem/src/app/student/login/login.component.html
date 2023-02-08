@@ -1,0 +1,52 @@
+<section id="student-login">
+  <div class="container">
+    <a class="go-back" (click)="goBack()">Back</a>
+  </div>
+  <div *ngIf="!resultAvailable" class="container align-items-center justify-content-center col-md-6 holder">
+    <h1 class="text-center">Student Login</h1>
+    <br/>
+    <div>
+      <form [formGroup]="resultForm" (ngSubmit)="getResult()">
+        <div class="form-group">
+          <label for="rollNumber">Roll No.</label>
+          <input type="number" class="form-control" id="rollNumber" formControlName="rollNo" placeholder="Enter Roll Number" min="1">
+          <span class="error" *ngIf="!resultForm.controls['rollNo'].valid && resultForm.controls['rollNo']?.touched">Roll Number is required</span>
+        </div>
+        <br>
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth</label>
+          <input type="date" class="form-control" id="dateOfBirth" formControlName="dob" placeholder="Enter Date of Birth">
+          <span class="error" *ngIf="!resultForm.controls['dob'].valid && resultForm.controls['dob']?.touched">Date of Birth is required</span>
+        </div><br>
+        <button type="submit" [disabled]="!resultForm.valid" class="btn btn-primary btn-lg">Submit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="container align-items-center justify-content-center col-md-6 holder" *ngIf="resultAvailable">
+    <div class="text-center result-head">
+      <h2 class="text-center">Result</h2>
+    </div>
+    <br>
+    <table class="table table-striped">
+      <tbody>
+        <tr>
+          <td>Roll No.</td>
+          <td>{{result.rollNo}}</td>
+        </tr>
+        <tr>
+          <td>Name</td>
+          <td>{{result.name}}</td>
+        </tr>
+        <tr>
+          <td>Date of Birth</td>
+          <td>{{result.dob}}</td>
+        </tr>
+        <tr>
+          <td>Score</td>
+          <td>{{result.score}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

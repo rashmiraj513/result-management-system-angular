@@ -1,0 +1,34 @@
+<section id="add-record">
+  <div class="container">
+    <a class="go-back" routerLink="/teacher/results">Back</a>
+  </div>
+  <div class="container align-items-center justify-content-center col-md-6 holder">
+    <h1 class="text-center">Add Result</h1>
+    <br>
+    <div>
+      <form [formGroup]="addResultForm" (ngSubmit)="addResult()">
+        <div class="form-group">
+          <label for="addRoll">Roll No.</label>
+          <input type="number" id="addRoll" class="form-control" formControlName="rollNo" placeholder="Enter Roll Number" min="0">
+          <span class="error" *ngIf="!addResultForm.controls['rollNo'].valid && addResultForm.controls['rollNo']?.touched">Roll Number is required</span>
+        </div><br>
+        <div class="form-group">
+          <label for="addName">Name</label>
+          <input type="text" id="addName" class="form-control" formControlName="name" placeholder="Enter the Name">
+          <span class="error" *ngIf="!addResultForm.controls['name'].valid && addResultForm.controls['name']?.touched">Name is required</span>
+        </div><br>
+        <div class="form-group">
+          <label for="addDOB">Date of Birth</label>
+          <input type="date" id="addDOB" class="form-control" formControlName="dob" placeholder="Enter the Date of Birth" min="1990-01-01" max="2020-01-01">
+          <span class="error" *ngIf="!addResultForm.controls['dob'].valid && addResultForm.controls['dob']?.touched">Date of Birth is required</span>
+        </div><br>
+        <div class="form-group">
+          <label for="addScore">Score</label>
+          <input type="number" id="addScore" class="form-control" formControlName="score" placeholder="Enter the Score" min="0" max="100">
+          <span class="error" *ngIf="!addResultForm.controls['score'].valid && addResultForm.controls['score']?.touched">Score is required and should be 0 to 100.</span>
+        </div><br>
+        <button type="submit" [disabled]="!addResultForm.valid" class="btn btn-primary btn-lg">Submit</button>
+      </form>
+    </div>
+  </div>
+</section>
